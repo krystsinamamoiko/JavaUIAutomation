@@ -7,7 +7,8 @@ public final class ApplicationGlobalState {
     private final String EMAIL = "krystsina.mamoiko@gmail.com";
     private final String PASSWORD = "aA1111111#";
     private final String USERNAME = "Krystsina Mamoiko";
-    private final long IMPLICIT_WAIT = 3;
+    private final long IMPLICIT_WAIT_SEC = 3;
+    private final long EXPLICIT_WAIT_SEC = 5;
 
     private ApplicationGlobalState() {
     }
@@ -37,6 +38,10 @@ public final class ApplicationGlobalState {
     }
 
     public long getImplicitWait() {
-        return IMPLICIT_WAIT;
+        return IMPLICIT_WAIT_SEC;
+    }
+
+    public long getExplicitWait() {
+        return EXPLICIT_WAIT_SEC;
     }
 }

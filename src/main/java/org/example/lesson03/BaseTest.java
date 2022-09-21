@@ -14,9 +14,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
@@ -68,7 +68,7 @@ public class BaseTest {
         options.addArguments("start-maximized");
 
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(ApplicationGlobalState.getInstance().getImplicitWait(), TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(ApplicationGlobalState.getInstance().getImplicitWait()));
     }
 
     /**
@@ -89,18 +89,18 @@ public class BaseTest {
         WebElement element = null;
         switch (type) {
             case XPATH:
-                new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+                new WebDriverWait(driver, Duration.ofSeconds(ApplicationGlobalState.getInstance().getExplicitWait())).until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
                 element = driver.findElement(By.xpath(locator));
                 break;
-            case ID:new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.id(locator)));
+            case ID:new WebDriverWait(driver, Duration.ofSeconds(ApplicationGlobalState.getInstance().getExplicitWait())).until(ExpectedConditions.presenceOfElementLocated(By.id(locator)));
                 element = driver.findElement(By.id(locator));
                 break;
             case CSS:
-                new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(locator)));
+                new WebDriverWait(driver, Duration.ofSeconds(ApplicationGlobalState.getInstance().getExplicitWait())).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(locator)));
                 element = driver.findElement(By.cssSelector(locator));
                 break;
             case CLASS_NAME:
-                new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.className(locator)));
+                new WebDriverWait(driver, Duration.ofSeconds(ApplicationGlobalState.getInstance().getExplicitWait())).until(ExpectedConditions.presenceOfElementLocated(By.className(locator)));
                 element = driver.findElement(By.className(locator));
                 break;
         }
