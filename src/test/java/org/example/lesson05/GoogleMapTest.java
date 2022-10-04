@@ -13,14 +13,16 @@ public class GoogleMapTest extends BaseTest {
     @Test
     void googleMapLoadedTest() {
         openURL(ApplicationGlobalState.getInstance().getTargetUrl());
+        checkElementVisibility(String.format(FOOTER_MENU_ITEM_XPATH, STORIES_MENU_TITLE), LocatorType.XPATH, true);
         clickElement(String.format(FOOTER_MENU_ITEM_XPATH, STORIES_MENU_TITLE), LocatorType.XPATH);
         checkPageTitle(STORIES_PAGE_TITLE);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
         Boolean isGoogleLoaded = Boolean.parseBoolean(jsExecutor.executeScript(
             "try { \n" +
-            "  (google && 'maps' in google) ? true : false;\n" +
+            " var result = (google && 'maps' in google) ? true : false;" +
+            " return result;\n" +
             "} catch (e) {\n" +
-            "  false;\n" +
+            " return false;\n" +
             "}").toString());
         Assertions.assertTrue(isGoogleLoaded, "There is no Google map on the Our stories page");
     }
