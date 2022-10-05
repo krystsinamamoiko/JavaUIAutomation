@@ -17,13 +17,13 @@ public class GoogleMapTest extends BaseTest {
         clickElement(String.format(FOOTER_MENU_ITEM_XPATH, STORIES_MENU_TITLE), LocatorType.XPATH);
         checkPageTitle(STORIES_PAGE_TITLE);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
-        Boolean isGoogleLoaded = Boolean.parseBoolean(jsExecutor.executeScript(
+        Boolean isGoogleLoaded = (boolean) jsExecutor.executeScript(
             "try { \n" +
             " var result = (google && 'maps' in google) ? true : false;" +
             " return result;\n" +
             "} catch (e) {\n" +
             " return false;\n" +
-            "}").toString());
+            "}");
         Assertions.assertTrue(isGoogleLoaded, "There is no Google map on the Our stories page");
     }
 }
