@@ -240,7 +240,7 @@ public class BaseTest {
     }
 
     public static void simpleLogin() {
-        openURL(ApplicationGlobalState.getInstance().getTargetUrl());
+        openURL(ApplicationGlobalState.getInstance().getBaseUrl());
         clickElement(LOGIN_MENU_CSS, LocatorType.CSS);
         setInputText(EMAIL_FIELD_ID, LocatorType.ID, ApplicationGlobalState.getInstance().getEmail());
         setInputText(PASSWORD_FIELD_ID, LocatorType.ID, ApplicationGlobalState.getInstance().getPassword());

@@ -9,7 +9,7 @@ public class LoginTest extends BaseTest {
     public static void main(String[] args) {
         initDriver();
 
-        openURL(ApplicationGlobalState.getInstance().getTargetUrl());
+        openURL(ApplicationGlobalState.getInstance().getBaseUrl());
         isTitleCorrect(INDEX_PAGE_TITLE);
         clickElement(LOGIN_MENU_CSS, LocatorType.CSS);
         isTitleCorrect(LOGIN_PAGE_TITLE);

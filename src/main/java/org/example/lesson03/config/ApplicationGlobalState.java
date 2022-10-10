@@ -3,10 +3,14 @@ package org.example.lesson03.config;
 public final class ApplicationGlobalState {
 
     private static ApplicationGlobalState INSTANCE;
-    private final String TARGET_URL = "http://automationpractice.com";
+    private final String BASE_URL = "http://automationpractice.com/index.php";
     private final String EMAIL = "krystsina.mamoiko@gmail.com";
     private final String PASSWORD = "aA1111111#";
     private final String USERNAME = "Krystsina Mamoiko";
+    private static String VALID_ADDRESS = "242 Gentle Trace";
+    private static String VALID_PHONE = "276-151-9740";
+    private static String VALID_POSTCODE = "50385";
+    private static String VALID_CITY = "Los Angeles";
     private final long IMPLICIT_WAIT_SEC = 3;
     private final long EXPLICIT_WAIT_SEC = 5;
 
@@ -21,8 +25,8 @@ public final class ApplicationGlobalState {
         return INSTANCE;
     }
 
-    public String getTargetUrl() {
-        return this.TARGET_URL;
+    public String getBaseUrl() {
+        return this.BASE_URL;
     }
 
     public String getUsername() {
@@ -35,6 +39,22 @@ public final class ApplicationGlobalState {
 
     public String getEmail() {
         return EMAIL;
+    }
+
+    public static String getValidAddress() {
+        return VALID_ADDRESS;
+    }
+
+    public static String getValidPhone() {
+        return VALID_PHONE;
+    }
+
+    public static String getValidPostcode() {
+        return VALID_POSTCODE;
+    }
+
+    public static String getValidCity() {
+        return VALID_CITY;
     }
 
     public long getImplicitWait() {
