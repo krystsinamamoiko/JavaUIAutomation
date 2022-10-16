@@ -1,16 +1,18 @@
 package org.example.lesson05;
 
-import org.example.lesson03.enums.LocatorType;
+import org.example.lesson06.pages.LoginPage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class LogoutTest extends AuthorizedBaseTest {
 
     @Test
     void logoutTest() {
-        clickElement(LOGOUT_MENU_CSS, LocatorType.CSS);
-        checkPageTitle(LOGIN_PAGE_TITLE);
-        checkElementVisibility(LOGIN_MENU_CSS, LocatorType.CSS, true);
-        checkElementVisibility(LOGOUT_MENU_CSS, LocatorType.CSS, false);
-        checkElementVisibility(ACCOUNT_MENU_CSS, LocatorType.CSS, false);
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.clickLogoutMenuItem();
+        Assertions.assertEquals(loginPage.getPageTitle(), getCurrentPageTitle(), "Page title is incorrect!");
+        Assertions.assertTrue(loginPage.isLoginMenuItemVisible(), "The login menu item is NOT displayed");
+        Assertions.assertFalse(loginPage.isLogoutMenuItemVisible(), "The logout menu item is displayed");
+        Assertions.assertFalse(loginPage.isAccountMenuItemVisible(), "The account menu item is displayed");
     }
 }
