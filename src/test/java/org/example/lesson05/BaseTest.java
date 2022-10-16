@@ -3,11 +3,14 @@ package org.example.lesson05;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BaseTest {
 
@@ -37,7 +40,7 @@ public abstract class BaseTest {
      */
     @AfterAll
     static void tearDown() {
-        driver.close();
+        driver.quit();
     }
 
     /**
@@ -46,6 +49,17 @@ public abstract class BaseTest {
      */
     public static void openURL(String url) {
         driver.get(url);
+    }
+
+    public List<String> openURLInNewTab(String url) {
+        JavascriptExecutor js = (JavascriptExecutor)getDriver();
+        js.executeScript( "window.open();" );
+
+        List<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
+        getDriver().switchTo().window(tabs.get(1)); //switches to new tab
+        getDriver().get(url);
+
+        return tabs;
     }
 
     public String getCurrentPageTitle() {
