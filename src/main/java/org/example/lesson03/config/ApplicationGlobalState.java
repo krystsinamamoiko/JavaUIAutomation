@@ -4,7 +4,7 @@ public final class ApplicationGlobalState {
 
     private static ApplicationGlobalState INSTANCE;
     private final String BASE_URL = "http://automationpractice.com/index.php";
-    private final String EMAIL = "krystsina.mamoiko@gmail.com";
+    private final String EMAIL = "krystsina.mamoiko@gmail.co";
     private final String PASSWORD = "aA1111111#";
     private final String USERNAME = "Krystsina Mamoiko";
     private static String VALID_ADDRESS = "242 Gentle Trace";
