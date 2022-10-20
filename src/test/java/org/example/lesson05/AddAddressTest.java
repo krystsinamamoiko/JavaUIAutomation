@@ -1,16 +1,24 @@
 package org.example.lesson05;
 
+import io.qameta.allure.*;
 import org.apache.commons.lang.RandomStringUtils;
 import org.example.lesson03.config.ApplicationGlobalState;
 import org.example.lesson06.pages.AddressPage;
 import org.example.lesson06.pages.AddressesPage;
 import org.example.lesson06.pages.MyAccountPage;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class AddAddressTest extends AuthorizedBaseTest {
 
     @Test
+    @DisplayName("Add a new member's address")
+    @Description("Verifying ability to add new member's addresses")
+    @Link("https://some.link.com")
+    @TmsLink("https://tms.link.com")
+    @Issue("https://issue.link.com")
+    @Severity(SeverityLevel.CRITICAL)
     void addNewAddressTest() {
         // navigate to Add a new address form
         MyAccountPage myAccountPage = new MyAccountPage(getDriver());
