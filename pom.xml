@@ -173,7 +173,7 @@
         <artifactId>allure-maven</artifactId>
         <version>${allure-maven.version}</version>
         <configuration>
-          <buildDirectory>${project.build.directory}/allure-results</buildDirectory>
+          <buildDirectory>${project.build.directory}</buildDirectory>
         </configuration>
       </plugin>
       </plugins>
